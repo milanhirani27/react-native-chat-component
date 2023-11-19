@@ -1,9 +1,12 @@
 {
   "name": "@milanhirani27/react-native-custom-chat",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native Custom Chat Component",
   "main": "index.js",
-  "keywords": ["react-native", "chat-component"],
+  "keywords": [
+    "react-native",
+    "chat-component"
+  ],
   "author": "Milan Hirani",
   "scripts": {
     "android": "react-native run-android",
@@ -13,8 +16,8 @@
     "test": "jest"
   },
   "repository": {
-		"url": "https://github.com/milanhirani27/react-native-chat-component"
-	},
+    "url": "https://github.com/milanhirani27/react-native-chat-component"
+  },
   "dependencies": {
     "@react-native-community/viewpager": "^5.0.11",
     "react": "18.2.0",
