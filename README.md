@@ -39,6 +39,7 @@ export default App;
 The following props can be used to customize the chat component:
 
 headerTitle (string, required): The title for the chat header.
+
 headerColor (string, required): The background color of the chat header.
 
 ---
