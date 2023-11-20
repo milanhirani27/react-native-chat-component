@@ -8,6 +8,12 @@ A customizable and user-friendly React Native chat component.
 npm install @milanhirani27/react-native-custom-chat
 ```
 
+
+#### Notes
+
+> - You can find images and video recordings in the 'screenshots' folder.
+---
+
 ## Usage
 
 ```js
