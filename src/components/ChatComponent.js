@@ -1,6 +1,21 @@
 // ChatComponent.js
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Keyboard, Animated, Easing, TextInput, Alert, FlatList, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Keyboard,
+  Animated,
+  Easing,
+  TextInput,
+  Alert,
+  FlatList,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+} from 'react-native';
+import PropTypes from 'prop-types';
 
 const ChatComponent = ({ headerTitle, headerColor }) => {
   const [messages, setMessages] = useState([]);
@@ -86,7 +101,6 @@ const ChatComponent = ({ headerTitle, headerColor }) => {
     flatListRef.current.scrollToEnd({ animated: true });
   }, [messages]);
 
-
   useEffect(() => {
     // Subscribe to keyboard events
     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
@@ -105,47 +119,52 @@ const ChatComponent = ({ headerTitle, headerColor }) => {
   }, []);
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : null}
-      style={styles.container}
-    >
-      <View style={styles.container}>
-        {/* Header Section */}
-        <View style={[styles.header, { backgroundColor: headerColor || '#3498db', elevation: 4 }]}>
-          <Text style={styles.headerTitle}>{headerTitle || 'Chat Title'}</Text>
-          <TouchableOpacity onPress={handlePressClose} style={styles.closeButton}>
-            <Text style={styles.closeButtonText}>X</Text>
-          </TouchableOpacity>
-        </View>
-        {/* List View */}
-        <FlatList
-          ref={flatListRef}
-          data={messages}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={renderMessageItem}
-        />
-        {/* Input Section */}
-        <View behavior="padding" style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Type a message..."
-            value={inputText}
-            onChangeText={handleInputChange}
-            placeholderTextColor="#888"
-            disabled={isSendButtonDisabled}
+    <SafeAreaView style={styles.safeAreaView}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
+        style={styles.container}
+      >
+        <View style={styles.container}>
+          {/* Header Section */}
+          <View style={[styles.header, { backgroundColor: headerColor || '#3498db', elevation: 4 }]}>
+            <Text style={styles.headerTitle}>{headerTitle || 'Chat Title'}</Text>
+            <TouchableOpacity onPress={handlePressClose} style={styles.closeButton}>
+              <Text style={styles.closeButtonText}>X</Text>
+            </TouchableOpacity>
+          </View>
+          {/* List View */}
+          <FlatList
+            ref={flatListRef}
+            data={messages}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={renderMessageItem}
           />
-          <TouchableOpacity onPress={sendMessage} style={[styles.sendButton, { backgroundColor: isSendButtonDisabled ? '#ccc' : '#3498db' }]}
-          >
-            <Text style={styles.sendButtonText}>Send</Text>
-          </TouchableOpacity>
+          {/* Input Section */}
+          <View behavior="padding" style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder="Type a message..."
+              value={inputText}
+              onChangeText={handleInputChange}
+              placeholderTextColor="#888"
+              disabled={isSendButtonDisabled}
+            />
+            <TouchableOpacity onPress={sendMessage} style={[styles.sendButton, { backgroundColor: isSendButtonDisabled ? '#ccc' : '#3498db' }]}
+            >
+              <Text style={styles.sendButtonText}>Send</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-      </View>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -224,7 +243,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-
 });
+
+ChatComponent.propTypes = {
+  headerTitle: PropTypes.string.isRequired,
+  headerColor: PropTypes.string.isRequired,
+};
 
 export default ChatComponent;

@@ -6,7 +6,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ChatComponent headerTitle="Chat Room" headerColor="#3498db"/>
+      <ChatComponent />
     </SafeAreaView>
   );
 };
