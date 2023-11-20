@@ -11,7 +11,7 @@ npm install @milanhirani27/react-native-custom-chat
 
 #### Notes
 
-> - You can find images and video recordings in the 'screenshots' folder.
+> - You can find images and video recordings in the 'screenshots' folder on Github.
 ---
 
 ## Usage
