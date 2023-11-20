@@ -6,8 +6,7 @@ A customizable and user-friendly React Native chat component.
 
 ```shell
 npm install @milanhirani27/react-native-custom-chat
-
----
+```
 
 ## Usage
 
@@ -60,14 +59,20 @@ If you want to contribute to this project or make changes, follow these steps:
 
 #### Clone the repository:
 
+```shell
 git clone https://github.com/milanhirani27/react-native-custom-chat.git
-Install dependencies:
+```
 
+## Install dependencies:
 
+```shell
 cd react-native-custom-chat
 
 npm install
+```
 
-Make your changes and run the example app:
+## Make your changes and run the example app:
 
+```shell
 npm start
+```
