@@ -67,7 +67,8 @@ git clone https://github.com/milanhirani27/react-native-custom-chat.git
 
 ```shell
 cd react-native-custom-chat
-
+```
+```shell
 npm install
 ```
 
